@@ -1,13 +1,17 @@
 object A extends App{
 
-  val nPoints = 10000
+  val nPairs = 1000
 
-  testForDimension(1)
+  val dimensions = Vector(2,10,50,100,150,200)
 
-  def testForDimension(dim : Int): Unit = {
+  val experiments = dimensions.foreach(DimensionExperiment)
+
+  case class DimensionExperiment(val dim : Int) {
     implicit val dimensions = dim
-    val points = (1 to nPoints).map(_ => Point())
-    points.foreach(println(_))
-    println(points.map(_.length).sum/nPoints)
+    val pairs = (1 to nPairs).map(_ => (Point(),Point()))
+    val distances = pairs.map((pair :( Point, Point)) => pair._1.distanceTo(pair._2))
+    // Sorting up to minimize numerical error
+    val averageDistance = distances.sortWith(_ < _).sum / nPairs
+    println(averageDistance)
   }
 }

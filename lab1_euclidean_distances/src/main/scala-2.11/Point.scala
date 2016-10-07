@@ -10,10 +10,15 @@ object Point {
   }
 }
 
-class Point(coords : Seq[Double])(implicit dimensions: Int = 1) extends AbstractPoint[Double](coords){
+class Point(val coords : Seq[Double])(implicit dimensions: Int = 1) extends AbstractPoint[Double](coords){
 
   // Sorting up to minimize numerical error
   def length: Double = Math.sqrt(coords.map(c => c*c).sortWith(_ < _).sum)
+
+  // Sorting up to minimize numerical error
+  def distanceTo(other: Point): Double = {
+    Math.sqrt((this.coords,other.coords).zipped.map((a,b) => (a-b)*(a-b)).sortWith(_ < _).sum)
+  }
 
 }
 
