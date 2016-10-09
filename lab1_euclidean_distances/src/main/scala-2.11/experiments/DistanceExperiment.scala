@@ -4,6 +4,8 @@ abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends Wr
   implicit val dimension = dim
   val distances : Seq[Double]
 
+  val title: String
+
   // Sorting up to minimize numerical error
   lazy val meanDistance = distances.sortWith(_ < _).sum / size
   lazy val variance = Math.sqrt(distances.map(d => (d - meanDistance)*(d - meanDistance)).sortWith(_ < _).sum) / (size - 1)
@@ -23,6 +25,7 @@ abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends Wr
     val f = breeze.plot.Figure()
     val p = f.subplot(0)
     p += breeze.plot.hist(distances,100)
-    p.title = s"Histogram for $dim dimensions"
+    p.title = s"$title, Histogram for $dim dimensions"
+    f.saveas(s"$title-$dimension.png")
   }
 }

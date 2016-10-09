@@ -5,11 +5,15 @@ object Point {
   val generator = scala.util.Random
 
   def apply()(implicit dimensions: Int = 1) : Point = {
-    new Point((1 to dimensions).map(_ => generator.nextDouble()))
+    new Point()
   }
 }
 
 class Point(val coords : Seq[Double])(implicit dimensions: Int) extends AbstractPoint[Double](coords){
+
+  def this()(implicit dimensions: Int) {
+    this((1 to dimensions).map(_ => Point.generator.nextDouble()))
+  }
 
   // Sorting up to minimize numerical error
   def length: Double = Math.sqrt(coords.map(c => c*c).sortWith(_ < _).sum)
