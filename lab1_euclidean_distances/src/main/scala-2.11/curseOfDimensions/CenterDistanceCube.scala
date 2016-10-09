@@ -10,7 +10,7 @@ object CenterDistanceCube extends App {
 
   implicit val nPairs = 1500L
   implicit val pointPlacement =InsideHyperCube
-  val csvResultsFile = "curseOfDimensions.csv"
+  val csvResultsFile = "curseOfDimensionsDistanceDensityCube.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 
   //  /* Running experiments sequentially */

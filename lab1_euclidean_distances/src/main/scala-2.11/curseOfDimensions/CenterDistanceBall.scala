@@ -10,7 +10,7 @@ object CenterDistanceBall extends App {
 
   implicit val nPairs = 1500L
   implicit val pointPlacement =InsideHyperBall
-  val csvResultsFile = "curseOfDimensions.csv"
+  val csvResultsFile = "curseOfDimensionsDistanceDensityBall.csv"
   val dimensions = Vector(2, 5, 7, 9, 11, 13)
 
 //  /* Running experiments sequentially */
