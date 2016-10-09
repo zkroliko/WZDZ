@@ -3,8 +3,8 @@ package curseOfDimensions
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
+import primitives.Center
 import primitives.pointPlacement.InsideHyperCube
-import primitives.{Center, pointPlacement}
 
 object CenterDistanceCube{
 
