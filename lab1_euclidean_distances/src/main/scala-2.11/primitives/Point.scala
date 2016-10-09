@@ -1,5 +1,7 @@
 package primitives
 
+import primitives.pointPlacement.PointPlacement
+
 
 object Point {
   val generator = scala.util.Random

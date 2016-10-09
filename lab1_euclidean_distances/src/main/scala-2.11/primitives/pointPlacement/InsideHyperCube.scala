@@ -1,4 +1,6 @@
-package primitives
+package primitives.pointPlacement
+
+import primitives.Point
 
 object InsideHyperCube extends PointPlacement{
 

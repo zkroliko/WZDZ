@@ -1,6 +1,7 @@
 package experiments
 
-import primitives.{PointPlacement, Point}
+import primitives.Point
+import primitives.pointPlacement.PointPlacement
 
 case class PairDistanceExperiment(dim: Int)
                                  (implicit val nPairs: Long, implicit val pointPlacement: PointPlacement)
