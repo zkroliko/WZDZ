@@ -25,6 +25,9 @@ object CenterDistanceBall extends App {
   /* Displaying histograms */
   experiments.foreach { e => e.createHistogram() }
 
+  /* Displaying distributions */
+  experiments.foreach{e => e.createDistributionPlot()}
+
 
 }
 
