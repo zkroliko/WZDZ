@@ -3,13 +3,13 @@ package curseOfDimensions
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
-import primitives.Center
-import primitives.pointPlacement.{InsideHyperBall, InsideHyperCube}
+import primitives.pointPlacement.InsideHyperCube
+import primitives.{Center, pointPlacement}
 
-object CenterDistanceCube extends App {
+object CenterDistanceCube{
 
   implicit val nPairs = 1500L
-  implicit val pointPlacement =InsideHyperCube
+  implicit val pointPlacement = InsideHyperCube
   val csvResultsFile = "curseOfDimensionsDistanceDensityCube.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 
@@ -23,7 +23,7 @@ object CenterDistanceCube extends App {
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
   /* Displaying histograms */
-  experiments.foreach { e => e.createDistributionPlot() }
+
 
 
 }

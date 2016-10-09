@@ -2,8 +2,7 @@ package experiments
 
 import breeze.plot._
 
-
-abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends WriteableAsCSV{
+abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends WriteableAsCSV {
   implicit val dimensions = dim
   val distances : Seq[Double]
 
@@ -32,15 +31,10 @@ abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends Wr
     f.saveas(s"$title-$dimensions.png")
   }
 
-  def createDistributionPlot()= {
+  def createDistributionPlot(p: Plot)= {
     val nSteps = 100
     val steps = breeze.linalg.linspace(0, distances.max, nSteps)
-    // Could be done with less complexity using clever data structures
     val counts = steps.map(s => distances.count(_ < s).toDouble)
-    val f = breeze.plot.Figure("Distribution of points / range")
-    val p = f.subplot(0)
-    p += plot(steps,counts.toVector,'-')
-    p.title = s"Dist $dim dimensions"
-    f.saveas(s"$title-distribution-$dimensions.png")
+    p += plot(steps,counts.toVector,'-',name=s"$dim dimensions")
   }
 }
