@@ -1,15 +1,16 @@
 import breeze.linalg._
 import csvResults.ResultsWriter
-import experiments.PairDistanceExperiment
+import experiments.VertexDistanceExperiment
+import primitives.Vertex
 
-object SubTaskA extends App {
+object SubTaskB extends App {
 
   implicit val nPairs = 1000L
-  val csvResultsFile = "resultsA.csv"
+  val csvResultsFile = "resultsB.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 
   /* Running experiments sequentially */
-  val experiments = dimensions.map(dim => PairDistanceExperiment(dim))
+  val experiments = dimensions.map(dim => VertexDistanceExperiment(dim,Vertex.bottomLeftBack(dim)))
 
   /* Writing results in human readable format */
   experiments.foreach(println(_))
@@ -19,7 +20,6 @@ object SubTaskA extends App {
 
   /* Displaying histograms */
   experiments.foreach { e => e.createHistogram() }
-
 
 }
 
