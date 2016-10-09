@@ -3,11 +3,11 @@ package curseOfDimensions
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
-import plottingAddons.PlotsDistribution
+import plottingAddons.{PlotsHistogram, PlotsDistribution}
 import primitives.Center
 import primitives.pointPlacement.InsideHyperCube
 
-object CenterDistanceCube extends App with PlotsDistribution{
+object CenterDistanceCube extends App with PlotsDistribution with PlotsHistogram{
 
   implicit val nPairs = 1500L
   implicit val pointPlacement = InsideHyperCube
@@ -24,7 +24,7 @@ object CenterDistanceCube extends App with PlotsDistribution{
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
   /* Displaying histograms */
-  //  experiments.foreach { e => e.createHistogram() }
+  plotHistogram(experiments.toArray.toSeq,"cube")
 
   /* Displaying distribution graph */
   plotDistribution(experiments.toArray.toSeq,"cube")

@@ -23,12 +23,8 @@ abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends Wri
     s"$dim, $meanDistance, $variance"
   }
 
-  def createHistogram() = {
-    val f = breeze.plot.Figure(s"Hist $dim dimensions")
-    val p = f.subplot(0)
+  def createHistogram(p: Plot) = {
     p += breeze.plot.hist(distances,100)
-    p.title = s"$title, Histogram for $dim dimensions"
-    f.saveas(s"$title-$dimensions.png")
   }
 
   def createDistributionPlot(p: Plot)= {
