@@ -23,7 +23,7 @@ object CenterDistanceCube extends App {
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
   /* Displaying histograms */
-  experiments.foreach { e => e.createHistogram() }
+  experiments.foreach { e => e.createDistributionPlot() }
 
 
 }
