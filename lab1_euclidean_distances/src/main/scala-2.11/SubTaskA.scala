@@ -1,5 +1,10 @@
 import java.io.PrintWriter
 
+import breeze.linalg.{DenseVector, _}
+import breeze.stats.hist
+import breeze.plot._
+import breeze.linalg._
+
 object SubTaskA extends App{
 
   implicit val nPairs = 1000L
@@ -12,9 +17,13 @@ object SubTaskA extends App{
   // Writing results in human readable format
   experiments.foreach(println(_))
 
+  // Displaying graphs
+
+  experiments.foreach{e => e.createHistogram()}
+
   // Writing to result file
   new PrintWriter(csvResultsFile) {
-    write(experiments.foldLeft("")((s,e) => s"$s${e.toCSV}\n"))
+//    write(experiments.foldLeft("")((s,e) => s"$s${e.toCSV}\n"))
     close()
   }
   println(s"\nResults written as CSV to file $csvResultsFile")
@@ -38,6 +47,13 @@ object SubTaskA extends App{
 
     def toCSV: String = {
       s"$dim, $meanDistance, $variance"
+    }
+
+    def createHistogram() = {
+      val f = breeze.plot.Figure()
+      val p = f.subplot(0)
+      p += breeze.plot.hist(distances,100)
+      p.title = s"Histogram for $dim dimensions"
     }
   }
 }
