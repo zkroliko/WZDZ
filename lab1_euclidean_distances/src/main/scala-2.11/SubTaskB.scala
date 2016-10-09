@@ -1,16 +1,17 @@
 import breeze.linalg._
 import csvResults.ResultsWriter
-import experiments.VertexDistanceExperiment
-import primitives.Vertex
+import experiments.PointDistanceExperiment
+import primitives.{InsideHyperCube, InsideHyperBall, Vertex}
 
 object SubTaskB extends App {
 
   implicit val nPairs = 1000L
+  implicit val pointPlacement = InsideHyperCube
   val csvResultsFile = "resultsB.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 
   /* Running experiments sequentially */
-  val experiments = dimensions.map(dim => VertexDistanceExperiment(dim,Vertex.bottomLeftBack(dim)))
+  val experiments = dimensions.map(dim => PointDistanceExperiment(dim,Vertex.bottomLeftBack(dim)))
 
   /* Writing results in human readable format */
   experiments.foreach(println(_))

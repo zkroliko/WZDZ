@@ -1,11 +1,12 @@
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PairDistanceExperiment
-import primitives.Point
+import primitives.{InsideHyperBall, Point}
 
 object CurseOfDimensionsTask extends App {
 
   implicit val nPairs = 1500L
+  implicit val pointPlacement = InsideHyperBall
   val csvResultsFile = "curseOfDimensions.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 

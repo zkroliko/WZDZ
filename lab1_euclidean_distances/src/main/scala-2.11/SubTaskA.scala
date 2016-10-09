@@ -1,10 +1,12 @@
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PairDistanceExperiment
+import primitives.InsideHyperCube
 
 object SubTaskA extends App {
 
   implicit val nPairs = 1000L
+  implicit val pointPlacement = InsideHyperCube
   val csvResultsFile = "resultsA.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 

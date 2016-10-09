@@ -1,7 +1,7 @@
 package experiments
 
 abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends WriteableAsCSV{
-  implicit val dimension = dim
+  implicit val dimensions = dim
   val distances : Seq[Double]
 
   val title: String
@@ -26,6 +26,6 @@ abstract class DistanceExperiment(dim : Int)(implicit val size: Long) extends Wr
     val p = f.subplot(0)
     p += breeze.plot.hist(distances,100)
     p.title = s"$title, Histogram for $dim dimensions"
-    f.saveas(s"$title-$dimension.png")
+    f.saveas(s"$title-$dimensions.png")
   }
 }

@@ -4,9 +4,14 @@ package primitives
 object Point {
   val generator = scala.util.Random
 
-  def apply()(implicit dimensions: Int = 1) : Point = {
-    new Point()
+  def apply(coords : Seq[Double])(implicit dimensions: Int) : Point = {
+    new Point(coords)
   }
+
+  def apply()(implicit dimensions: Int, pointPlacement: PointPlacement) : Point = {
+    pointPlacement.generatePoint(dimensions)
+  }
+
 }
 
 class Point(val coords : Seq[Double])(implicit dimensions: Int) extends AbstractPoint[Double](coords){
