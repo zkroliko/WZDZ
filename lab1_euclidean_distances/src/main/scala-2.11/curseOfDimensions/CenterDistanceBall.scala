@@ -5,7 +5,7 @@ import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
 import plottingAddons.PlotsDistribution
 import primitives.Center
-import primitives.pointPlacement.{InsideHyperBall, InsideHyperCube}
+import primitives.pointPlacement.InsideHyperBall
 
 object CenterDistanceBall extends App with PlotsDistribution {
 
@@ -24,7 +24,7 @@ object CenterDistanceBall extends App with PlotsDistribution {
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
   /* Displaying histograms */
-//  experiments.foreach { e => e.createHistogram() }
+  //  experiments.foreach { e => e.createHistogram() }
 
   /* Displaying distribution graph */
   plotDistribution(experiments.toArray.toSeq,"ball")
