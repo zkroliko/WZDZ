@@ -18,7 +18,7 @@ trait PlotsPCAResultsTogether {
       p.ylabel = "y"
       pair._1.createPCAPlot(p)
       pair._2.createPCAPlot(p)
-      f.saveas(s"cube-ball-together-pca-${pair._1.dim}.png")
+      f.saveas(s"cube-ball-together-pca-${pair._1.dim}.png",200)
     }
   }
 }

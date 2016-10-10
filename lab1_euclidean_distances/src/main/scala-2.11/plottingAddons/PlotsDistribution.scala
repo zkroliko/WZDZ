@@ -1,9 +1,10 @@
 package plottingAddons
 
-import experiments.PointDistanceExperiment
+import experiments.HasADistribution
 
 trait PlotsDistribution {
-  def plotDistribution(experiments: Seq[PointDistanceExperiment], objDesc: String): Unit = {
+
+  def plotDistribution(experiments: List[HasADistribution], objDesc: String): Unit = {
     val title = s"Distribution of points / range from center of a hyper$objDesc"
     val f = breeze.plot.Figure(title)
     val p = f.subplot(0)
@@ -11,7 +12,7 @@ trait PlotsDistribution {
     p.title = title
     p.xlabel = "range"
     p.ylabel = "points within"
-    experiments.foreach { e: PointDistanceExperiment => e.createDistributionPlot(p) }
-    f.saveas(s"$objDesc-center-range-distribution.png")
+    experiments.foreach { e => e.createDistributionPlot(p) }
+    f.saveas(s"$objDesc-center-range-distribution.png",200)
   }
 }

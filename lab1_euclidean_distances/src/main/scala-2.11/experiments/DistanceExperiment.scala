@@ -2,7 +2,7 @@ package experiments
 
 import breeze.plot._
 
-abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends WriteableAsCSV {
+abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends WriteableAsCSV with HasADistribution {
   implicit val dimensions = dim
   val distances : Seq[Double]
 

@@ -9,7 +9,7 @@ import utils.MatrixTools
 
 case class PCAExperiment(dim: Int, source: Point)
                         (implicit val nPoints: Long, implicit val pointPlacement: PointPlacement)
-  extends DistanceExperiment(dim) {
+  extends DistanceExperiment(dim) with HasADistribution {
 
   val title: String = "PCA-2D-Distance"
 

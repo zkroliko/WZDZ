@@ -11,6 +11,6 @@ trait PlotsHistogram {
     p.xlabel = "distance"
     p.ylabel = "points"
     experiments.foreach { e => e.createHistogram(p) }
-    f.saveas(s"$filename-histogram.png")
+    f.saveas(s"$filename-histogram.png",200)
   }
 }

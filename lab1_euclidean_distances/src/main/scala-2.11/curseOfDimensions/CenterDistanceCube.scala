@@ -26,13 +26,8 @@ object CenterDistanceCube extends App with PlotsDistribution with PlotsHistogram
   /* Writing to result file */
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
-  /* Displaying histograms */
-  Future {
-    plotHistogram(experiments.toArray.toSeq,"dist-center-cube",s"Histogram of distance from the middle of a hypercube")
-  }
-
   /* Displaying distribution graph */
-  plotDistribution(experiments.toArray.toSeq, "cube")
+  plotDistribution(experiments.toArray.toList, "cube")
 }
 
 

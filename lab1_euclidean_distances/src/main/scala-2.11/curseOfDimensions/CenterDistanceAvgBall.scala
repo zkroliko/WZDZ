@@ -3,19 +3,19 @@ package curseOfDimensions
 import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
-import plottingAddons.{PlotsHistogram, PlotsDistribution}
+import plottingAddons.{PlotsAverageDistance, PlotsDistribution, PlotsHistogram}
 import primitives.Center
 import primitives.pointPlacement.InsideHyperBall
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-object CenterDistanceBall extends App with PlotsDistribution with PlotsHistogram {
+object CenterDistanceAvgBall extends App with PlotsAverageDistance {
 
   implicit val nPairs = 1500L
   implicit val pointPlacement = InsideHyperBall
-  val csvResultsFile = "curse-dimensions-distance-ball.csv"
-  val dimensions = Vector(2,3,6,10, 50, 75, 100, 150, 200)
+  val csvResultsFile = "curse-dimensions-avg-distance-ball.csv"
+  val dimensions = 3 to 200
 
 //  /* Running experiments sequentially */
   val experiments = dimensions.map(dim => PointDistanceExperiment(dim,Center(dim)))
@@ -26,8 +26,8 @@ object CenterDistanceBall extends App with PlotsDistribution with PlotsHistogram
   /* Writing to result file */
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
-  /* Displaying distribution graph */
-  plotDistribution(experiments.toArray.toList,"ball")
+  /* Displaying avg distance graph */
+  plotAverageDistance(experiments.toArray.toSeq,"ball")
 
 }
 

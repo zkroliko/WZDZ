@@ -12,6 +12,6 @@ trait PlotsPCAResults {
     p.xlabel = "a"
     p.ylabel = "b"
     experiments.foreach { e => e.createPCAPlot(p) }
-    f.saveas(s"$filename-pca.png")
+    f.saveas(s"$filename-pca.png",200)
   }
 }

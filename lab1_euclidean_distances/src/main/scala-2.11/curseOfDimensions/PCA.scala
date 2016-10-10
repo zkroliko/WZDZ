@@ -35,7 +35,9 @@ object PCA extends App with PlotsDistribution with PlotsPCAResults with PlotsPCA
   plotPCAResults(experimentsCube.toArray.toSeq,experimentsBall.toArray.toSeq)
 
   /* Displaying distribution graph */
-//  plotPCAResults(experiments.toArray.toSeq, "cube")
+  plotDistribution(experimentsBall.toArray.toList,"ball")
+  plotDistribution(experimentsCube.toArray.toList,"cube")
+
 }
 
 

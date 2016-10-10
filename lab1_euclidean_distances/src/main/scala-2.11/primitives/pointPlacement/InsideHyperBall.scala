@@ -15,7 +15,7 @@ object InsideHyperBall extends PointPlacement{
     */
   def generatePoint(implicit dimensions: Int): Point = {
     val U = math.pow(random.nextDouble(), 1/dimensions)
-    val X = ( 0 until dimensions) map {_ => random.nextGaussian()}
-    Point(X.map(xo=>0.5 + (0.5*U/ math.sqrt(X.map(x => x * x).sum))*xo))
+    val X = ( 0 until dimensions+1) map {_ => random.nextGaussian()}
+    Point(X.slice(0,dimensions).map(xo=>0.5 + (0.5*U/ math.sqrt(X.map(x => x * x).sum))*xo))
   }
 }
