@@ -1,6 +1,8 @@
 package primitives.pointPlacement
 
+import breeze.linalg.{*, norm}
 import primitives.{Center, Point}
+import primitives.pointPlacement.OnHyperSphere
 
 import scala.util.Random
 
@@ -10,12 +12,14 @@ object InsideHyperBall extends PointPlacement{
 
   /**
     * https://math.stackexchange.com/questions/87230/picking-random-points-in-the-volume-of-sphere-with-uniform-probability
+    *
     * @param dimensions number of dimensions for a point
     * @return a point inside a ball
     */
   def generatePoint(implicit dimensions: Int): Point = {
-    val U = math.pow(random.nextDouble(), 1/dimensions)
-    val X = ( 0 until dimensions+1) map {_ => random.nextGaussian()}
-    Point(X.slice(0,dimensions).map(xo=>0.5 + (0.5*U/ math.sqrt(X.map(x => x * x).sum))*xo))
+    val p: Point = OnHyperSphere.generatePoint
+    val c = Center(dimensions)
+    val r = random.nextDouble()/2
+    (p-c)*r+c
   }
 }

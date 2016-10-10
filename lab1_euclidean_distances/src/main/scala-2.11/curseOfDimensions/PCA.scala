@@ -15,7 +15,7 @@ object PCA extends App with PlotsDistribution with PlotsPCAResults with PlotsPCA
   implicit val nPairs = 1500L
   implicit val pointPlacement = InsideHyperCube
   val csvResultsFile = "curse-dimensions-distance-cube.csv"
-  val dimensions = Vector(2, 3, 4)
+  val dimensions = Vector(10, 50, 100, 150, 200)
 
   //  /* Running experiments sequentially */
   val experimentsCube = dimensions.map(dim => PCAExperiment(dim,Center(dim))(nPairs,InsideHyperCube))

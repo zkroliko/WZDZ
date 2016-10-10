@@ -30,6 +30,14 @@ class Point(val coords : Seq[Double])(implicit dimensions: Int) extends Abstract
     Math.sqrt((this.coords,other.coords).zipped.map((a,b) => (a-b)*(a-b)).sortWith(_ < _).sum)
   }
 
+  def /(value : Double) = new Point(coords.map(_/value))
+
+  def *(value : Double) = new Point(coords.map(_*value))
+
+  def +(other: Point ) = new Point(coords.zip(other.coords).map(e => e._1+e._2))
+
+  def -(other: Point ) = new Point(coords.zip(other.coords).map(e => e._1-e._2))
+
 }
 
 abstract class AbstractPoint[T : Numeric](coords : Seq[T])(implicit dimensions: Int) {
