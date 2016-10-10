@@ -28,7 +28,7 @@ abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends Wri
   }
 
   def createDistributionPlot(p: Plot)= {
-    val nSteps = 100
+    val nSteps = 200
     val steps = breeze.linalg.linspace(0, distances.max, nSteps)
     val counts = steps.map(s => distances.count(_ < s).toDouble)
     p += plot(steps,counts.toVector,'-',name=s"$dim dimensions")

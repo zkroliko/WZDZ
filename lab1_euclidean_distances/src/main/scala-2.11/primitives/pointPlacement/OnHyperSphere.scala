@@ -1,15 +1,16 @@
 package primitives.pointPlacement
 
-import primitives.{Center, Point}
+import primitives.Point
 
 import scala.util.Random
 
-object InsideHyperBall extends PointPlacement{
+object OnHyperSphere extends PointPlacement{
 
   val random = Random
 
   /**
     * https://math.stackexchange.com/questions/87230/picking-random-points-in-the-volume-of-sphere-with-uniform-probability
+ *
     * @param dimensions number of dimensions for a point
     * @return a point inside a ball
     */

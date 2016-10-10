@@ -13,9 +13,9 @@ import scala.concurrent.Future
 object CenterDistanceBall extends App with PlotsDistribution with PlotsHistogram {
 
   implicit val nPairs = 1500L
-  implicit val pointPlacement =InsideHyperBall
+  implicit val pointPlacement = InsideHyperBall
   val csvResultsFile = "curse-dimensions-distance-ball.csv"
-  val dimensions = Vector(2, 5, 7, 9, 11, 13)
+  val dimensions = Vector(10, 50, 75, 100, 150, 200)
 
 //  /* Running experiments sequentially */
   val experiments = dimensions.map(dim => PointDistanceExperiment(dim,Center(dim)))
