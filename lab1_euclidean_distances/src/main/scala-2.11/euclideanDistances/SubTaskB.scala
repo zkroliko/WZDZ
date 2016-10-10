@@ -1,6 +1,5 @@
 package euclideanDistances
 
-import breeze.linalg._
 import csvResults.ResultsWriter
 import experiments.PointDistanceExperiment
 import plottingAddons.PlotsHistogram
@@ -11,7 +10,7 @@ object SubTaskB extends App with PlotsHistogram {
 
   implicit val nPairs = 1000L
   implicit val pointPlacement = InsideHyperCube
-  val csvResultsFile = "resultsEuclideanB.csv"
+  val csvResultsFile = "euclidean-distancesB.csv"
   val dimensions = Vector(2, 10, 50, 100, 150, 200)
 
   /* Running experiments sequentially */
@@ -24,7 +23,7 @@ object SubTaskB extends App with PlotsHistogram {
   ResultsWriter(csvResultsFile,experiments.toArray.toList)
 
   /* Displaying histograms */
-  plotHistogram(experiments.toArray.toSeq,"cube")
+  plotHistogram(experiments.toArray.toSeq,"dist-corner-cube",s"Histogram of distance from a corner of a hypercube")
 
 }
 

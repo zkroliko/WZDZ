@@ -24,7 +24,7 @@ abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends Wri
   }
 
   def createHistogram(p: Plot) = {
-    p += breeze.plot.hist(distances,100)
+    p += breeze.plot.hist(distances,150,name=s"$dim dimensions")
   }
 
   def createDistributionPlot(p: Plot)= {
