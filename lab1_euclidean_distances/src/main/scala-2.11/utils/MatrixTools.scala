@@ -15,6 +15,14 @@ object MatrixTools {
     matrix
   }
 
+  def pointsFromMatrix(matrix: Matrix[Double]) : List[Point] = {
+    val buf = List[Point]()
+    (1 to matrix.rows).foreach {
+      buf :+ new Point((1 to matrix.cols).map(y => matrix(x,y)))(matrix.cols)
+    }
+    buf
+  }
+
   def cov(A:DenseMatrix[Double]):DenseMatrix[Double] = {
     val n = A.cols
     val D:DenseMatrix[Double] = A.copy
