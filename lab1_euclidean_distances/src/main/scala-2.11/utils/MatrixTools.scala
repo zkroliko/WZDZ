@@ -15,10 +15,10 @@ object MatrixTools {
     matrix
   }
 
-  def pointsFromMatrix(matrix: Matrix[Double]) : List[Point] = {
+  def pointsFromMatrix(matrix: Matrix[Double])(implicit dim: Int) : List[Point] = {
     val buf = List[Point]()
-    (1 to matrix.rows).foreach {
-      buf :+ new Point((1 to matrix.cols).map(y => matrix(x,y)))(matrix.cols)
+    (0 to matrix.cols).foreach { x =>
+      buf :+ new Point((0 to dim-1).map(y => matrix(x,y)))(dim)
     }
     buf
   }

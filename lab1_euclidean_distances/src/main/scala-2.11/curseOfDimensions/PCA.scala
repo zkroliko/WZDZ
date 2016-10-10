@@ -32,7 +32,9 @@ object PCA extends App with PlotsDistribution with PlotsPCAResults with PlotsPCA
   /* Displaying histograms */
 //  plotPCAResults(experimentsCube.toArray.toSeq,"cube",s"PCA hypercube")
 //  plotPCAResults(experimentsBall.toArray.toSeq,"ball",s"PCA ball")
-  plotPCAResults(experimentsCube.toArray.toSeq,experimentsBall.toArray.toSeq)
+  Future {
+    plotPCAResults(experimentsCube.toArray.toSeq, experimentsBall.toArray.toSeq)
+  }
 
   /* Displaying distribution graph */
   plotDistribution(experimentsBall.toArray.toList,"ball")

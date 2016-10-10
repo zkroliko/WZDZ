@@ -1,5 +1,6 @@
 package experiments
 
+import breeze.numerics.sqrt
 import breeze.plot._
 
 abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends WriteableAsCSV with HasADistribution {
@@ -24,7 +25,9 @@ abstract class DistanceExperiment(dim: Int)(implicit val size: Long) extends Wri
   }
 
   def createHistogram(p: Plot) = {
-    p += breeze.plot.hist(distances,150,name=s"$dim dimensions")
+    p += breeze.plot.hist(distances.map(d => d/Math.sqrt(dim)),150,name=s"$dim dimensions")
+//        p += breeze.plot.hist(distances.map(_/Math.sqrt(size)),150,name=s"$dim dimensions")
+
   }
 
   def createDistributionPlot(p: Plot)= {
